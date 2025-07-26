@@ -40,7 +40,7 @@ ul {
 
 .game-options {
     max-width: 100%;
-    width: 700px;
+    width: 1200px;
     margin: 0 auto;
     text-align: center;
     display: flex;
@@ -90,7 +90,7 @@ ul {
 
 .game-card-box {
     max-width: 100%;
-    width: 700px;
+    width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -201,15 +201,37 @@ ul {
     background-color: var(--prim-color);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+    .game-options {
+        max-width: 100%;
+        width: 768px;
+    }
+
     .game-card-box {
-        grid-template-columns: repeat(6, 1fr);
+        max-width: 100%;
+        width: 768px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .game-options {
+        max-width: 100%;
+        width: 650px;
+    }
+
+    .game-card-box {
+        max-width: 100%;
+        width: 650px;
+    }
+
+    .game-card-box {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media (max-width: 480px) {
-    .game_board{
-       padding: 15px;
+    .game_board {
+        padding: 15px;
     }
 
     .game-title {
@@ -235,7 +257,7 @@ ul {
         font-size: 16px;
     }
 
-    .game-options .reset span{
+    .game-options .reset span {
         display: none;
     }
 
