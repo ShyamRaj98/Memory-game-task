@@ -1,0 +1,261 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Germania One", system-ui;
+}
+
+:root {
+    /* theme color */
+    --prim-color: #9c844d;
+    --sec-color: #111315;
+    --white-color: #ffffff;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.game_board {
+    min-height: 100vh;
+    height: 100%;
+    background-image: url("./images/game-bg.jpg");
+    background-size: contain;
+    padding: 2rem;
+}
+
+.game-title {
+    width: 30vw;
+    background-image: url("./images/heading-bg-2.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: #ff0037;
+    padding: 1.9vw 5vw;
+    font-family: "Sancreek", serif;
+    font-size: 3vw;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.game-options {
+    max-width: 100%;
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.game-options .move-contain {
+    background-color: var(--sec-color);
+    color: var(--white-color);
+    padding: 8px;
+    font-size: 22px;
+    border-radius: 8px;
+    cursor: default;
+    margin-bottom: 10px;
+}
+
+.move-contain .move-count {
+    min-width: 100px;
+    width: 100%;
+    background-color: var(--white-color);
+    color: var(--sec-color);
+    font-size: 20px;
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+.game-options .reset {
+    max-height: 42px;
+    padding: 5px 20px;
+    font-size: 20px;
+    border: 2px solid var(--sec-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.game-options .reset:hover {
+    background-color: var(--prim-color);
+}
+
+.game-card-box {
+    max-width: 100%;
+    width: 700px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+}
+
+.card img {
+    width: inherit;
+}
+
+.card {
+    width: 100%;
+    font-size: 32px;
+    border-radius: 6px;
+    position: relative;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.inner-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.card.flipped .inner-card {
+    transform: rotateY(180deg);
+}
+
+.front-card,
+.back-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.front-card {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.back-card {
+    transform: rotateY(180deg);
+}
+
+.back-card img {
+    height: 100%;
+}
+
+.card.matched {
+    opacity: 0.6;
+}
+
+.card.matched .inner-card {
+    pointer-events: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--prim-color);
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    z-index: 9999;
+    text-align: center;
+    display: none;
+}
+
+.popup.show {
+    display: block;
+}
+
+.popup .pop-title {
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.pop-inner {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.pop-inner .pop-text {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.pop-inner button {
+    max-height: 42px;
+    padding: 5px 20px;
+    font-size: 16px;
+    border: 2px solid var(--sec-color);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.pop-inner button:hover {
+    background-color: var(--prim-color);
+}
+
+@media (max-width: 768px) {
+    .game-card-box {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .game_board{
+       padding: 15px;
+    }
+
+    .game-title {
+        width: 41vw;
+        padding: 2.5vw 5vw;
+        font-size: 4vw;
+    }
+
+    .game-card-box {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .game-options .move-contain {
+        font-size: 12px;
+    }
+
+    .game-options .move-count {
+        font-size: 12px;
+        border-radius: 4px;
+    }
+
+    .game-options .reset {
+        font-size: 16px;
+    }
+
+    .game-options .reset span{
+        display: none;
+    }
+
+    .popup {
+        padding: 15px;
+    }
+
+    .popup .pop-title {
+        font-size: 18px;
+    }
+
+    .pop-inner {
+        padding: 8px;
+    }
+
+    .pop-inner .pop-text {
+        font-size: 16px;
+    }
+
+    .pop-inner button {
+        font-size: 13px;
+    }
+}
